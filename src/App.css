@@ -13,6 +13,14 @@ body {
   padding: 20px;
 }
 
+label {
+  margin-right: 10px;
+}
+
+select {
+  margin-right: 10px;
+}
+
 h1 {
   font-size: 2em;
   text-align: center;
@@ -70,4 +78,18 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+.loaderWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
