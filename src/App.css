@@ -52,34 +52,6 @@ button:hover {
   margin-top: auto;
 }
 
-/* Gallery styles */
-.grid-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 16px;
-}
-
-.list-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.list-gallery div {
-  display: flex;
-  align-items: center;
-}
-
-.list-gallery img {
-  margin-right: 16px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
 .loaderWrap {
   display: flex;
   align-items: center;
