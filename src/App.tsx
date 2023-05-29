@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import { Gallery } from "./components";
-import { Button, Loader } from "./ui";
+import { Appbar, Gallery, DarkModeToggle } from "./components";
+import { Button, Loader, Switcher } from "./ui";
+import { ThemeProvider } from "./ThemeContext";
 
 type Cat = {
   id: string;
@@ -62,6 +63,10 @@ const App: React.FC = () => {
     });
   };
 
+  const handleModeChange = () => {
+    setGalleryMode(galleryMode === "grid" ? "masonry" : "grid");
+  };
+
   useEffect(() => {
     axios.get("https://api.thecatapi.com/v1/breeds").then((response) => {
       setBreeds(response.data);
@@ -70,59 +75,36 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Gato Gallery</h1>
-      <Button onClick={() => setGalleryMode("grid")}>Grid</Button>
-      <Button onClick={() => setGalleryMode("masonry")}>Masonry</Button>
-      <label>
-        <input
-          type="checkbox"
-          checked={showGifs}
-          onChange={(e) => {
-            setShowGifs(e.target.checked);
-            handleSearchCats();
-          }}
-          disabled={loading}
+    <ThemeProvider>
+      <div className="container">
+        <DarkModeToggle />
+        <h1>Gato Gallery</h1>
+        <Appbar
+          galleryMode={galleryMode}
+          handleModeChange={handleModeChange}
+          loading={loading}
+          showGifs={showGifs}
+          setShowGifs={setShowGifs}
+          selectedBreed={selectedBreed}
+          setSelectedBreed={setSelectedBreed}
+          breeds={breeds}
+          handleSearchCats={handleSearchCats}
+          limit={limit}
+          setLimit={setLimit}
         />
-        Show GIFs
-      </label>
-      <select
-        value={selectedBreed}
-        onChange={(e) => {
-          const value = e.target.value;
-
-          setSelectedBreed(value);
-          handleSearchCats({ breedId: value });
-        }}
-        disabled={loading}
-      >
-        <option value="">Select a breed</option>
-        {breeds.map((breed) => (
-          <option key={breed.id} value={breed.id}>
-            {breed.name}
-          </option>
-        ))}
-      </select>
-      <input
-        type="number"
-        value={limit}
-        onChange={(e) => setLimit(parseInt(e.target.value))}
-        disabled={loading}
-      />
-      <div className="images-container">
         <Gallery cats={cats} view={galleryMode} />
+        <div className="loaderWrap">{loading && <Loader />}</div>
+        <div className="footer">
+          <Button
+            className="load-more"
+            onClick={handleLoadMoreCats}
+            disabled={loading}
+          >
+            Load More
+          </Button>
+        </div>
       </div>
-      <div className="loaderWrap">{loading && <Loader />}</div>
-      <div className="footer">
-        <Button
-          className="load-more"
-          onClick={handleLoadMoreCats}
-          disabled={loading}
-        >
-          Load More
-        </Button>
-      </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

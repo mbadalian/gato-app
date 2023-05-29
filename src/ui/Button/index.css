@@ -1,4 +1,4 @@
-.button_wrapper {
+.button {
     height: 40px;
     border-radius: 90px;
     background: #1b1b1b;
@@ -10,6 +10,6 @@
     cursor: pointer;
 }
 
-.button_wrapper:hover {
+.button:hover {
     background-color: #5c5c5c;
 }

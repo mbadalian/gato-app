@@ -1,0 +1,26 @@
+:root {
+    --color: rgb(231, 133, 135);
+    --bg: rgb(2, 2, 2);
+}
+
+.loader {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    margin: 1em;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2.5px;
+    border-color: var(--bg);
+    border-top-color: var(--color);
+    animation: spin 0.4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

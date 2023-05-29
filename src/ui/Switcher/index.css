@@ -1,0 +1,53 @@
+:root {
+  --unchecked-color: #ccc;
+  --checked-color: #1b1b1b;
+}
+
+.switch {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 35px;
+  margin: 10px;
+}
+
+.switch input {
+  display: none;
+  pointer-events: none;
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: var(--unchecked-color);
+  transition: 0.4s;
+  border: 4px solid var(--unchecked-color);
+  border-radius: 90px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 35px;
+  width: 35px;
+  left: 0;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  border-color: var(--checked-color);
+  background-color: var(--checked-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1b1b1b;
+}
+
+input:checked + .slider:before {
+  transform: translateX(50px);
+}

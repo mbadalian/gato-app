@@ -1,2 +1,4 @@
 export { Gallery } from './Gallery';
-export { Image } from './Image';
+export { ImageWithSkeleton } from './ImageWithSkeleton';
+export { DarkModeToggle } from './DarkModeToggle';
+export { Appbar } from './Appbar';

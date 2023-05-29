@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image } from "../Image";
+import { ImageWithSkeleton } from "../ImageWithSkeleton";
 import "./index.css";
 
 type Cat = {
@@ -26,7 +26,7 @@ export const Gallery: React.FC<Props> = ({ cats, view }) => {
   return (
     <div className={`${view}-gallery`}>
       {cats.map((cat) => (
-        <Image
+        <ImageWithSkeleton
           key={cat.id}
           src={cat.url}
           alt="Cute cat"
@@ -34,25 +34,8 @@ export const Gallery: React.FC<Props> = ({ cats, view }) => {
         />
       ))}
       {selectedImage && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onClick={closeLightbox}
-        >
-          <img
-            src={selectedImage}
-            alt="Selected Cat"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
-          />
+        <div className="lightbox" onClick={closeLightbox}>
+          <ImageWithSkeleton src={selectedImage} alt="Selected Cat" />
         </div>
       )}
     </div>
