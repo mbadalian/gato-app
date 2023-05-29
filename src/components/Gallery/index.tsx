@@ -26,12 +26,14 @@ export const Gallery: React.FC<Props> = ({ cats, view }) => {
   return (
     <div className={`${view}-gallery`}>
       {cats.map((cat) => (
-        <ImageWithSkeleton
-          key={cat.id}
-          src={cat.url}
-          alt="Cute cat"
-          onClick={() => openLightbox(cat.url)}
-        />
+        <div className="masonry-gallery-item">
+          <ImageWithSkeleton
+            key={cat.id}
+            src={cat.url}
+            alt="Cute cat"
+            onClick={() => openLightbox(cat.url)}
+          />
+        </div>
       ))}
       {selectedImage && (
         <div className="lightbox" onClick={closeLightbox}>

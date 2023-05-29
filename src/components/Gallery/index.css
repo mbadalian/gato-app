@@ -4,11 +4,24 @@
     grid-gap: 16px;
 }
 
-.masonry-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 16px;
-    grid-template-rows: masonry;
+@supports (grid-template-rows: masonry) {
+    .masonry-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 16px;
+      grid-template-rows: masonry;
+    }
+  } else {
+    .masonry-gallery {
+      column-count: 5;
+      column-gap: 16px;
+    }
+
+    .masonry-gallery-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 16px;
+    }
   }
 
 /* .masonry-gallery img {
