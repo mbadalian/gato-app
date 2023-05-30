@@ -59,4 +59,12 @@
   object-fit: contain;
 }
 
+.lightbox-counter {
+  position: absolute;
+  bottom: 15px;
+  left: 47%;
+    text-align: center;
+    padding: 2px;
+}
+
 /* TODO: lightbox next prev buttons + show image count (next button if has next image)*/

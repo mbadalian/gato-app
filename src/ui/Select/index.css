@@ -3,6 +3,42 @@
     --color-hover: #5c5c5c;
 }
 
+.wrapper {
+    margin-left: 10px;
+    display: inline-block;
+    margin-left: 5px;
+    /* height: 100vh;
+    overflow: scroll initial; */
+}
+
+.menu {
+    max-height: 150;
+    max-width: 300;
+    overflow-y: scroll;
+    background-color: #eee;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.highlighted-index{
+    background-color: #BFDBFE;
+}
+
+.selected-item{
+    font-weight: bold;
+}
+
+.item {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    flex-direction: column;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
 .input {
     height: 40px;
     box-sizing: border-box;

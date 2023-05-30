@@ -4,6 +4,7 @@
 }
 
 .input {
+    margin-left: 20px;
     height: 40px;
     box-sizing: border-box;
     border-radius: 90px;

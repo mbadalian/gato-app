@@ -29,38 +29,28 @@ export const Select: React.FC<Props> = ({ items }) => {
     },
   });
 
+  const menuClass = classnames("menu", {
+    hidden: !(isOpen && items.length),
+  });
+
   return (
     <div className="wrapper">
       <div>
-        <label {...getLabelProps()}>Choose your favorite book:</label>
-        <div>
-          <Input placeholder="Best book ever" {...getInputProps()} />
-          <Button
-            aria-label="toggle menu"
-            type="button"
-            {...getToggleButtonProps()}
-          >
-            {isOpen ? <>&#8593;</> : <>&#8595;</>}
-          </Button>
-        </div>
+        <Input placeholder="Choose cat breed" {...getInputProps()} />
       </div>
-      <ul
-        className={`${!(isOpen && items.length) && "hidden"}`}
-        {...getMenuProps()}
-      >
+      <ul className={menuClass} {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
             <li
               className={classnames(
-                highlightedIndex === index && "bg-blue-300",
-                selectedItem === item && "font-bold",
-                "py-2 px-3 shadow-sm flex flex-col"
+                highlightedIndex === index && "highlighted-index",
+                selectedItem === item && "selected-item",
+                "item"
               )}
-              key={`${item.value}${index}`}
+              key={`${item.name}${index}`}
               {...getItemProps({ item, index })}
             >
-              <span>{item.title}</span>
-              <span>{item.author}</span>
+              <span>{item.name}</span>
             </li>
           ))}
       </ul>
