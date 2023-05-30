@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import { Appbar, Gallery, DarkModeToggle } from "./components";
-import { Button, Loader, Switcher } from "./ui";
+import { Button, Loader } from "./ui";
 import { ThemeProvider } from "./ThemeContext";
 
 type Cat = {

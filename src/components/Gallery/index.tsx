@@ -37,7 +37,11 @@ export const Gallery: React.FC<Props> = ({ cats, view }) => {
       ))}
       {selectedImage && (
         <div className="lightbox" onClick={closeLightbox}>
-          <ImageWithSkeleton src={selectedImage} alt="Selected Cat" />
+          <ImageWithSkeleton
+            src={selectedImage}
+            alt="Selected Cat"
+            className="lightbox-image"
+          />
         </div>
       )}
     </div>

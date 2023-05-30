@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Switcher } from "../../ui";
+import { Button, Switcher, Input, Select } from "../../ui";
 import "./index.css";
 
 interface Props {
@@ -43,23 +43,16 @@ export const Appbar: React.FC<Props> = ({
           handleSearchCats();
         }}
       />
-      <select
+      <Select
         value={selectedBreed}
-        onChange={(e) => {
-          const breed = e.target.value;
+        onChange={(breed) => {
           setSelectedBreed(breed);
           handleSearchCats({ breedId: breed });
         }}
+        items={breeds}
         disabled={loading}
-      >
-        <option value="">Select a breed</option>
-        {breeds.map((breed) => (
-          <option key={breed.id} value={breed.id}>
-            {breed.name}
-          </option>
-        ))}
-      </select>
-      <input
+      />
+      <Input
         type="number"
         value={limit}
         onChange={(e) => setLimit(parseInt(e.target.value))}
